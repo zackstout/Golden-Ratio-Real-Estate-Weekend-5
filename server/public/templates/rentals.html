@@ -1,10 +1,13 @@
 
 <div class="row">
   <h3>For Rent!</h3>
-  <div class="col-lg-3 col-md-4 rental" ng-repeat="rental in rc.result.rentals">
+
+  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 rental" ng-repeat="rental in rc.result.rentals">
     <p>rent: {{rental.rent}}</p>
     <p>size: {{rental.sqft}}</p>
     <p>location: {{rental.city}}</p>
+    <!-- <img src="{{rc.image.config.url}}"> -->
+
 
   </div>
 </div>

@@ -9,9 +9,10 @@
 
     <script src="scripts/client.js" charset="utf-8"></script>
     <script src="scripts/services/real-estate-service.js" charset="utf-8"></script>
+    <script src="scripts/controllers/main-controller.js" charset="utf-8"></script>
     <script src="scripts/controllers/listing-controller.js" charset="utf-8"></script>
     <script src="scripts/controllers/rental-controller.js" charset="utf-8"></script>
-    
+
     <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="styles/style.css">
   </head>
@@ -20,6 +21,19 @@
 
       <div class="container">
         <h2>real estate!</h2>
+
+        <div id="add" ng-controller="MainController as mc">
+          <form ng-submit="mc.addPlace(mc.newPlace)">
+            <select ng-model="mc.newPlace.type">
+              <option value="rent">For Rent</option>
+              <option value="sale">For Sale</option>
+            </select>
+            <input type="text" ng-model="mc.newPlace.size" placeholder="Size">
+            <input type="text" ng-model="mc.newPlace.location" placeholder="City">
+<button type="submit">Do it!</button>
+
+          </form>
+        </div>
 
         <a href="/#!/rentals">Rentals</a>
         <a href="/#!/listings">Listings</a>

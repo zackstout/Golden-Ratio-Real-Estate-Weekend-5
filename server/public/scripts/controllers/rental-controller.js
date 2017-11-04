@@ -4,8 +4,11 @@ app.controller('RentalController', function (RealEstateService) {
 
     var vm = this;
     vm.result = RealEstateService.result;
+    vm.image = RealEstateService.image;
 
     RealEstateService.getRentals();
+
+    // RealEstateService.getImage2();
 
 
 });

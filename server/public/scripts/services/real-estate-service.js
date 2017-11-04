@@ -7,6 +7,10 @@ app.service('RealEstateService', function($http) {
     listings: []
   };
 
+  self.image = {};
+
+  // var APIkey = 'AIzaSyCsPm4V1kjeCqOosP3N3_9d-NEgj5r166w';
+
   self.getRentals = function() {
     $http.get('/realestate/rentals').then(function(response) {
       console.log(response.data);
@@ -24,5 +28,48 @@ app.service('RealEstateService', function($http) {
       console.log('whoops');
     });
   };
+
+  self.addPlace = function(place) {
+    console.log(place);
+    if (place.type == "rent") {
+      console.log('rental!');
+    } else if (place.type == "sale") {
+      console.log('sale!');
+    }
+    // $http.post()
+  };
+  //
+  // self.addGame = function(gameToAdd) {
+  //       console.log(gameToAdd);
+  //       $http.post('/games', gameToAdd).then(function(response) {
+  //         console.log('yup');
+  //         gs.refreshGames();
+  //
+  //       }).catch(function(error) {
+  //         console.log('nope');
+  //
+  //       });
+  //   };
+
+
+
+  //
+  // self.getImage = function() {
+  //   $http.get('https://maps.googleapis.com/maps/api/streetview?size=150x150&location=40.7,-74&key=' + APIkey).then(function(response) {
+  //     console.log(response.config.url);
+  //     self.image = response;
+  //   }).catch(function(err) {
+  //     console.log('whoops');
+  //   });
+  // };
+  //
+  // self.getImage2 = function() {
+  //   $http.get('https://loremflickr.com/150/150/house').then(function(response) {
+  //     console.log(response);
+  //     self.image = response;
+  //   }).catch(function(err) {
+  //     console.log('whoops');
+  //   });
+  // };
 
 });
