@@ -5,13 +5,14 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var RealEstateSchema = new Schema({cost: Number, size: Number, location: String});
+var RentalSchema = new Schema({rent: Number, sqft: Number, city: String});
+var ListingSchema = new Schema({cost: Number, sqft: Number, city: String});
 
-var Rentals = mongoose.model('Rentals', RealEstateSchema, 'rentals');
-var Listings = mongoose.model('Listings', RealEstateSchema, 'listings');
+var Rental = mongoose.model('Rentals', RentalSchema, 'rentals');
+var Listing = mongoose.model('Listings', ListingSchema, 'listings');
 
 router.get('/rentals', function(req, res) {
-  Rentals.find({}, function(err, foundRealEstate) {
+  Rental.find({}, function(err, foundRealEstate) {
     if (err) {
       console.log('whoooops');
       res.sendStatus(500);
@@ -22,12 +23,38 @@ router.get('/rentals', function(req, res) {
 });
 
 router.get('/listings', function(req, res) {
-  Listings.find({}, function(err, foundRealEstate) {
+  Listing.find({}, function(err, foundRealEstate) {
     if (err) {
       console.log('whoooops');
       res.sendStatus(500);
     } else {
       res.send(foundRealEstate);
+    }
+  });
+});
+
+router.post('/rentals', function(req, res) {
+  console.log(req.body);
+  var property = new Rental(req.body);
+  property.save(function(err, data) {
+    if (err) {
+      console.log('ooooops');
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+router.post('/listings', function(req, res) {
+  console.log(req.body);
+  var property = new Listing(req.body);
+  property.save(function(err, data) {
+    if (err) {
+      console.log('ooooops');
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
     }
   });
 });

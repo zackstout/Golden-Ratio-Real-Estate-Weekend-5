@@ -6,9 +6,12 @@
 
     <script src="vendors/angular.min.js" charset="utf-8"></script>
     <script src="vendors/angular-route.js" charset="utf-8"></script>
+    <script src="vendors/ui-bootstrap.js" charset="utf-8"></script>
+    <!-- <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script> -->
 
     <script src="scripts/client.js" charset="utf-8"></script>
     <script src="scripts/services/real-estate-service.js" charset="utf-8"></script>
+    <script src="scripts/controllers/modal-controller.js" charset="utf-8"></script>
     <script src="scripts/controllers/main-controller.js" charset="utf-8"></script>
     <script src="scripts/controllers/listing-controller.js" charset="utf-8"></script>
     <script src="scripts/controllers/rental-controller.js" charset="utf-8"></script>
@@ -19,21 +22,35 @@
   <body ng-app="app">
     <h1>what up</h1>
 
-      <div class="container">
+      <div class="container" ng-controller="MainController as mc">
         <h2>real estate!</h2>
+        <br>
 
-        <div id="add" ng-controller="MainController as mc">
+        <!-- <button ng-click="mc.openModal()">Add a property!</button> -->
+
+
+        <!-- <script type="text/ng-template" id="modal.html"> -->
+
+          <!-- <div class="modal-header"> -->
+            <h4>Add that shit!</h4>
+          <!-- </div>
+          <div class="modal-body"> -->
+
           <form ng-submit="mc.addPlace(mc.newPlace)">
             <select ng-model="mc.newPlace.type">
               <option value="rent">For Rent</option>
-              <option value="sale">For Sale</option>
+              <option value="cost">For Sale</option>
             </select>
-            <input type="text" ng-model="mc.newPlace.size" placeholder="Size">
-            <input type="text" ng-model="mc.newPlace.location" placeholder="City">
-<button type="submit">Do it!</button>
+            <input type="text" ng-model="mc.newPlace.money" placeholder="Rent">
+            <input type="text" ng-model="mc.newPlace.sqft" placeholder="Size">
+            <input type="text" ng-model="mc.newPlace.city" placeholder="City">
+        <button type="submit">Do it!</button>
+
 
           </form>
-        </div>
+        <!-- </div>
+      </script> -->
+<br><br>
 
         <a href="/#!/rentals">Rentals</a>
         <a href="/#!/listings">Listings</a>

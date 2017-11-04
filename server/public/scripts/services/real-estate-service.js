@@ -31,12 +31,31 @@ app.service('RealEstateService', function($http) {
 
   self.addPlace = function(place) {
     console.log(place);
+
     if (place.type == "rent") {
       console.log('rental!');
-    } else if (place.type == "sale") {
+      var rentalToSend = {
+        rent: place.money,
+        sqft: place.sqft,
+        city: place.city
+      };
+      $http.post('/realestate/rentals', rentalToSend).then(function(response) {
+        console.log('well done sir');
+        self.getRentals();
+      });
+
+    } else if (place.type == "cost") {
       console.log('sale!');
+      var listingToSend = {
+        cost: place.money,
+        sqft: place.sqft,
+        city: place.city
+      };
+      $http.post('/realestate/listings', listingToSend).then(function(response) {
+        console.log('aha yes');
+        self.getListings();
+      });
     }
-    // $http.post()
   };
   //
   // self.addGame = function(gameToAdd) {
