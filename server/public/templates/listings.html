@@ -1,7 +1,7 @@
 
-<div>
+<div class="row">
   <h3>For Sale!</h3>
-  <div ng-repeat="listing in lc.result.listings">
+  <div class="col-lg-3 col-md-4 listing" ng-repeat="listing in lc.result.listings">
     <p>cost: {{listing.cost}}</p>
     <p>size: {{listing.sqft}}</p>
     <p>location: {{listing.city}}</p>
