@@ -8,10 +8,24 @@
     <script src="vendors/angular-route.js" charset="utf-8"></script>
 
     <script src="scripts/client.js" charset="utf-8"></script>
-  
+    <script src="scripts/services/real-estate-service.js" charset="utf-8"></script>
+    <script src="scripts/controllers/listing-controller.js" charset="utf-8"></script>
+    <script src="scripts/controllers/rental-controller.js" charset="utf-8"></script>
+
   </head>
-  <body>
+  <body ng-app="app">
     <h1>what up</h1>
 
+      <div class="container">
+        <h2>real estate!</h2>
+
+        <a href="/#!/rentals">Rentals</a>
+        <a href="/#!/listings">Listings</a>
+
+        <br><br>
+
+        <main ng-view></main>
+
+      </div>
   </body>
 </html>
