@@ -1,7 +1,7 @@
 
-#Golden Ratio Realty!
+# Golden Ratio Realty!
 
-##Getting Started
+## Getting Started
 IMPORTANT: Execute the following commands in the terminal where you have mongo running:
 
 ```
