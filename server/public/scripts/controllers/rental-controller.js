@@ -6,11 +6,19 @@ app.controller('RentalController', function (RealEstateService) {
     vm.result = RealEstateService.result;
     // vm.image = RealEstateService.image;
     vm.search = '';
+    vm.sort = '';
+    vm.sorttype = '';
 
-    vm.order = function() {
-      console.log('ordering');
-      RealEstateService.getRentalsOrdered();
+    vm.orderDescending = function() {
+      console.log('ordering', vm.sort, vm.sorttype);
+      RealEstateService.getRentalsOrdered('desc', vm.sort);
     };
+
+    vm.orderAscending = function() {
+      console.log('ordering', vm.sort, vm.sorttype);
+      RealEstateService.getRentalsOrdered('asc', vm.sort);
+    };
+    
 
     RealEstateService.getRentals();
 

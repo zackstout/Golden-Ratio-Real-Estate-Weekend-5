@@ -24,12 +24,41 @@ router.get('/rentals', function(req, res) {
   });
 });
 
-router.get('/rentals/order', function(req, res) {
-  Rental.find({}, null, {
-    sort: {
-      rent: -1
+router.get('/rentals/order/rent/desc', function(req, res) {
+  Rental.find({}, null, {sort: {rent: -1}}, function(err, foundRealEstate) {
+    if (err) {
+      console.log('whoooops', err);
+      res.sendStatus(500);
+    } else {
+      res.send(foundRealEstate);
     }
-  }, function(err, foundRealEstate) {
+  });
+});
+
+router.get('/rentals/order/rent/asc', function(req, res) {
+  Rental.find({}, null, {sort: {rent: 1}}, function(err, foundRealEstate) {
+    if (err) {
+      console.log('whoooops', err);
+      res.sendStatus(500);
+    } else {
+      res.send(foundRealEstate);
+    }
+  });
+});
+
+router.get('/rentals/order/size/desc', function(req, res) {
+  Rental.find({}, null, {sort: {sqft: -1}}, function(err, foundRealEstate) {
+    if (err) {
+      console.log('whoooops', err);
+      res.sendStatus(500);
+    } else {
+      res.send(foundRealEstate);
+    }
+  });
+});
+
+router.get('/rentals/order/size/asc', function(req, res) {
+  Rental.find({}, null, {sort: {sqft: 1}}, function(err, foundRealEstate) {
     if (err) {
       console.log('whoooops', err);
       res.sendStatus(500);
