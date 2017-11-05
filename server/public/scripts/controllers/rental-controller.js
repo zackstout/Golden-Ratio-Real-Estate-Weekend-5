@@ -12,7 +12,9 @@ app.controller('RentalController', function (RealEstateService) {
     };
 
     vm.getRentals();
-    RealEstateService.putValues();
+
+    // RealEstateService.putValues();
+    // RealEstateService.getValues();
 
     vm.getValue = function() {
       console.log('gettin value');

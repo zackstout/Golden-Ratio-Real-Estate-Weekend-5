@@ -31,30 +31,33 @@ router.get('/rentals/value', function(req, res) {
       console.log('whoooops');
       res.sendStatus(500);
     } else {
-      // console.log(foundRealEstate);
-      // var values = [];
-      // for (var i = 0; i<foundRealEstate.length; i ++) {
-      //   values.push(foundRealEstate[i].sqft/foundRealEstate[i].rent);
-      // }
-      // console.log(values);
+      console.log(foundRealEstate);
+      for (var i = 0; i<foundRealEstate.length; i ++) {
+        foundRealEstate.values = (foundRealEstate[i].sqft/foundRealEstate[i].rent);
+        console.log(foundRealEstate);
+      }
+      console.log(foundRealEstate);
       res.send(foundRealEstate);
     }
   });
 });
+//
+// router.put('/rentals/value', function(req, res) {
+//   console.log(req.body);
+//   Rental.findByIdAndUpdate(req.body._id, {
+//     $set: {
+//       value: req.body.sqft/req.body.rent
+//     }
+//   }, {new: true}, function(err, data) {
+//     if (err) {
+//       console.log('noooo', err);
+//       res.sendStatus(500);
+//     } else {
+//       res.sendStatus(200);
+//     }
+//   });
+// });
 
-router.put('/rentals/', function(req, res) {
-  console.log(req.body);
-  Rental.update({
-    "value": req.body.sqft/req.body.rent,
-  }, function(err, data) {
-    if (err) {
-      console.log('noooo', err);
-      res.sendStatus(500);
-    } else {
-      res.sendStatus(200);
-    }
-  });
-});
 
 
 // the following four routes should be condensed into one:

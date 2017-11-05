@@ -45,13 +45,13 @@ app.service('RealEstateService', function($http) {
     });
   };
 
-  self.putValues = function() {
-    $http.put('/realestate/rentals').then(function(response) {
-      self.getValues();
-    }).catch(function(err) {
-      console.log('I have failed you my friend');
-    });
-  };
+  // self.putValues = function(property) {
+  //   $http.put('/realestate/rentals/value', property).then(function(response) {
+  //     self.getValues();
+  //   }).catch(function(err) {
+  //     console.log('I have failed you my friend');
+  //   });
+  // };
 
 
 
