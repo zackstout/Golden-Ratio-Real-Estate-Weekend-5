@@ -90,7 +90,8 @@ router.get('/rentals/order/size/asc', function(req, res) {
 
 router.get('/rentals/search/:id', function(req, res) {
   console.log(req.params.id);
-  Rental.find({"city": req.params.id}, function(err, foundRealEstate) {
+  // var regEx = new RegExp('req.params.id', i);
+  Rental.find({"city": {$regex: req.params.id}}, function(err, foundRealEstate) {
     if (err) {
       console.log('whoooops', err);
       res.sendStatus(500);

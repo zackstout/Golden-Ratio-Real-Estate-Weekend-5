@@ -12,15 +12,6 @@ app.service('RealEstateService', function($http) {
 
   // var APIkey = 'AIzaSyCsPm4V1kjeCqOosP3N3_9d-NEgj5r166w';
 
-  self.searchRentals = function(query) {
-    console.log('we out here', query);
-    $http.get('/realestate/rentals/search/' + query).then(function(response) {
-      self.result.rentals = response.data;
-    }).catch(function(err) {
-      console.log('done messed up');
-    });
-
-  };
 
   self.getRentals = function() {
     $http.get('/realestate/rentals').then(function(response) {
@@ -31,6 +22,15 @@ app.service('RealEstateService', function($http) {
     });
   };
 
+  self.searchRentals = function(query) {
+    console.log('we out here', query);
+    $http.get('/realestate/rentals/search/' + query).then(function(response) {
+      self.result.rentals = response.data;
+    }).catch(function(err) {
+      console.log('done messed up');
+    });
+
+  };
 
 
   self.getValues = function() {
