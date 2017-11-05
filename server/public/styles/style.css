@@ -11,10 +11,10 @@ body {
 }
 
 #bestDeals {
-  background-color: goldenrod;
+  background-color: chocolate;
 }
 
-#bestDealsHead {
+#bestDealsHead, #rentalsHead {
   text-align: center;
 }
 
@@ -28,8 +28,8 @@ body {
 #tagline {
   font-style: italic;
   margin-left: 15px;
-  font-size: 20px;
-  color: #EF476F;
+  font-size: 19px;
+  color: chocolate;
 }
 
 form {
@@ -48,6 +48,7 @@ input, select {
 
 h1 {
   color: goldenrod;
+  margin: 10px;
 }
 
 a {
@@ -56,4 +57,5 @@ a {
 
 canvas {
   margin: 15px;
+  border-color: blue;
 }

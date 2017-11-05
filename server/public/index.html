@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="styles/style.css">
   </head>
+
+
   <body ng-app="app">
     <h1>Golden Ratio Realty</h1>
     <div class='row'>
@@ -32,8 +34,7 @@
 </div>
 <div class="container">
       <div class="row" ng-controller="MainController as mc">
-        <h3>Add a Property!</h3>
-
+        <h4>Add a Property!</h4>
 
           <form class="col-md-4 col-lg-4" ng-submit="mc.addPlace(mc.newPlace)">
             <select ng-model="mc.newPlace.type">

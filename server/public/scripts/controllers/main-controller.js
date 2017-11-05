@@ -14,6 +14,7 @@ app.controller('MainController', function (RealEstateService) {
       var ctx = canvas.getContext("2d");
 
       var phi = 1.61803398875;
+      ctx.strokeStyle = '#A4303F';
 
       function goldenRectangle(x) {
       //rectangle's border:
