@@ -24,6 +24,8 @@ router.get('/rentals', function(req, res) {
   });
 });
 
+
+// the following four routes should be condensed into one:
 router.get('/rentals/order/rent/desc', function(req, res) {
   Rental.find({}, null, {sort: {rent: -1}}, function(err, foundRealEstate) {
     if (err) {
@@ -67,6 +69,23 @@ router.get('/rentals/order/size/asc', function(req, res) {
     }
   });
 });
+
+
+router.get('/rentals/search/:id', function(req, res) {
+  console.log(req.params.id);
+  Rental.find({"city": req.params.id}, function(err, foundRealEstate) {
+    if (err) {
+      console.log('whoooops', err);
+      res.sendStatus(500);
+    } else {
+      res.send(foundRealEstate);
+    }
+  });
+});
+
+
+
+
 
 router.post('/rentals', function(req, res) {
   console.log(req.body);
@@ -114,6 +133,7 @@ router.put('/rentals/:id', function(req, res) {
 
 
 //Listing Routes:
+//I wonder if these could also be wrapped up in above functions with a variable, rather than just replicating all the same stuff in a new router:
 router.get('/listings', function(req, res) {
   Listing.find({}, function(err, foundRealEstate) {
     if (err) {

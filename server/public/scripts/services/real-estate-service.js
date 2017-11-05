@@ -11,12 +11,22 @@ app.service('RealEstateService', function($http) {
 
   // var APIkey = 'AIzaSyCsPm4V1kjeCqOosP3N3_9d-NEgj5r166w';
 
+  self.searchRentals = function(query) {
+    console.log('we out here', query);
+    $http.get('/realestate/rentals/search/' + query).then(function(response) {
+      self.result.rentals = response.data;
+    }).catch(function(err) {
+      console.log('done messed up');
+    });
+
+  };
+
   self.getRentals = function() {
     $http.get('/realestate/rentals').then(function(response) {
       console.log(response.data);
       self.result.rentals = response.data;
     }).catch(function(err) {
-      console.log('whoops');
+      console.log('I have failed you');
     });
   };
 
@@ -29,7 +39,7 @@ app.service('RealEstateService', function($http) {
     });
   };
 
-
+//same idea over here, i wonder whether we could roll listing stuff into rental functions to avoid need for another service:
   self.getListings = function() {
     $http.get('/realestate/listings').then(function(response) {
       console.log(response.data);

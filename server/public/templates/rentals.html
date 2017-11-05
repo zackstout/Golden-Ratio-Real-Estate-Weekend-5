@@ -2,9 +2,11 @@
 <div class="row">
   <h3>For Rent!</h3>
 
-  Search: <input type="text" ng-model="rc.search">
+
+  A cool idea would be to display the 3 best deals in terms of space/dollar
+<br><br>
+  Search: <input type="text" ng-model="rc.search"><button ng-click="rc.searchRentals()">Search</button>
   <br>
-  {{rc.search}}
   <br>
   Sort by: <select ng-model="rc.sort">
     <option value="rent">Rent</option>
@@ -13,7 +15,6 @@
   <button ng-click="rc.orderDescending()"><span class="glyphicon glyphicon-triangle-bottom"></span></button>
   <button ng-click="rc.orderAscending()"><span class="glyphicon glyphicon-triangle-top"></span></button>
   <br>
-
 
   <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 rental" ng-repeat="rental in rc.result.rentals">
     <p>rent: {{rental.rent | currency}}</p>
