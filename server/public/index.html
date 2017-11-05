@@ -20,35 +20,45 @@
     <link rel="stylesheet" href="styles/style.css">
   </head>
   <body ng-app="app">
-    <h1>what up</h1>
+    <h1>Golden Ratio Realty</h1>
+    <div class='row'>
+    <div id="logo" class= "col-md-3 col-lg-3">
+    <canvas id="canvas" width="200" height="130">
+</div>
+<div class="col-md-3 col-lg-3">
+  <br>
+<p id="tagline">Find your perfect balance today!</p>
+</div>
+</div>
+<div class="container">
+      <div class="row" ng-controller="MainController as mc">
+        <h3>Add a Property!</h3>
 
-      <div class="container" ng-controller="MainController as mc">
-        <h2>real estate!</h2>
-        <br>
 
-            <h4>Add that shit!</h4>
-
-
-          <form ng-submit="mc.addPlace(mc.newPlace)">
+          <form class="col-md-4 col-lg-4" ng-submit="mc.addPlace(mc.newPlace)">
             <select ng-model="mc.newPlace.type">
               <option value="rent">For Rent</option>
               <option value="cost">For Sale</option>
             </select>
+            <br>
             <input type="text" ng-model="mc.newPlace.money" placeholder="Rent">
-            <input type="text" ng-model="mc.newPlace.sqft" placeholder="Size">
-            <input type="text" ng-model="mc.newPlace.city" placeholder="City">
-        <button type="submit">Do it!</button>
+            <br><input type="text" ng-model="mc.newPlace.sqft" placeholder="Size">
+            <br><input type="text" ng-model="mc.newPlace.city" placeholder="City">
+      <br>  <button type="submit">Do it!</button>
 
 
           </form>
         <!-- </div>
       </script> -->
-<br><br>
 
+<div class="col-md-4 col-lg-4">
+  <h3>Navigation</h3>
         <a href="/#!/rentals">Rentals</a>
+        <br>
         <a href="/#!/listings">Listings</a>
-
+</div>
         <br><br>
+      </div>
 
         <main ng-view></main>
 

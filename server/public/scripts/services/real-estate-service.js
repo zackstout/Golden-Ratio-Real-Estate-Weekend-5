@@ -71,7 +71,8 @@ app.service('RealEstateService', function($http) {
       var rentalToSend = {
         rent: place.money,
         sqft: place.sqft,
-        city: place.city
+        city: place.city,
+        values: place.sqft/place.money
       };
       $http.post('/realestate/rentals', rentalToSend).then(function(response) {
         console.log('well done sir');
