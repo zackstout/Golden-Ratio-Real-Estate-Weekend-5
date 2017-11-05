@@ -65,7 +65,7 @@ app.service('RealEstateService', function($http) {
       title: "Are you sure??",
       text: "should we consign this property to the flames?",
       icon: "warning",
-      buttons: true,
+      buttons: ['No dog!', 'Burn it!'],
       dangerMode: true
     }).then(function (willDelete) {
       if (willDelete) {
@@ -109,7 +109,7 @@ app.service('RealEstateService', function($http) {
             title: "Save update??",
             text: "Rent: " + updatedRental.rent + ", Sqft: " + updatedRental.sqft + ", City: " + updatedRental.city,
             icon: "warning",
-            buttons: true,
+            buttons: ['Nope', 'Save'],
             dangerMode: true
           }).then(function(willUpdate) {
             console.log(updatedRental);
@@ -131,7 +131,7 @@ app.service('RealEstateService', function($http) {
   }; //end editRental
 
 
-  
+
 
 //
 //

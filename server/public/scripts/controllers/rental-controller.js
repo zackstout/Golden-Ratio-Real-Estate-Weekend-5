@@ -5,6 +5,7 @@ app.controller('RentalController', function (RealEstateService) {
     var vm = this;
     vm.result = RealEstateService.result;
     // vm.image = RealEstateService.image;
+    vm.search = '';
 
     RealEstateService.getRentals();
 
