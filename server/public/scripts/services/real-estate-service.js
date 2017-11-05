@@ -58,10 +58,9 @@ app.service('RealEstateService', function($http) {
         self.getListings();
       });
     }
-  }; //end POST routes
+  }; //end addPlace
 
   self.deleteRental = function(id) {
-
     swal({
       title: "Are you sure??",
       text: "should we consign this property to the flames?",
@@ -71,7 +70,7 @@ app.service('RealEstateService', function($http) {
     }).then(function (willDelete) {
       if (willDelete) {
         swal("Poof!", {icon: "success"});
-        $http.delete('/realestate/rentals/' + id).then(function(response) {
+        $http.delete('realestate/rentals/' + id).then(function(response) {
           self.getRentals();
         }).catch(function(error) {
           console.log('nuts');
@@ -80,9 +79,71 @@ app.service('RealEstateService', function($http) {
         swal("Phew!");
       }
     });
+  }; //end deleteRental
 
-  };
+  self.editRental = function(id, property) {
+    console.log('hi');
+    var updatedRental = {};
+    swal({
+      title: "Update rent",
+      text: "current rent: " + property.rent,
+      content: "input"
+    }).then(function(val) {
+      console.log(val);
+      updatedRental.rent = val;
+      swal({
+        title: "Update size",
+        text: "current size: " + property.sqft,
+        content: "input"
+      }).then(function(val) {
+        console.log(val);
+        updatedRental.sqft = val;
+        swal({
+          title: "Update city",
+          text: "current city: " + property.city,
+          content: "input"
+        }).then(function(val) {
+          console.log(val);
+          updatedRental.city = val;
+          swal({
+            title: "Save update??",
+            text: "Rent: " + updatedRental.rent + ", Sqft: " + updatedRental.sqft + ", City: " + updatedRental.city,
+            icon: "warning",
+            buttons: true,
+            dangerMode: true
+          }).then(function(willUpdate) {
+            console.log(updatedRental);
+            if(willUpdate) {
+              swal("Whoosh!", {icon: "success"});
+              $http.put('realestate/rentals/' + id, updatedRental).then(function(response) {
+                swal("Well Done!", "property rental updated!", "success");
+                self.getRentals();
+            }).catch(function(error) {
+              console.log('shoot!!');
+            });
+          } else {
+            swal("Close call!");
+          }
+            });
+          });
+        });
+      });
+  }; //end editRental
 
+
+  
+
+//
+//
+//   gs.likeGame = function(gameId, game) {
+//   console.log('hi');
+//   $http.put('/games/' + gameId, game).then(function(response) {
+//     gs.refreshGames();
+//   }).catch(function(error) {
+//     console.log('nuts!!!');
+//   });
+// };
+//
 
 
 

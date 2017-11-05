@@ -8,8 +8,9 @@ app.controller('RentalController', function (RealEstateService) {
 
     RealEstateService.getRentals();
 
-    vm.editProperty = function() {
-      console.log('edit');
+    vm.editProperty = function(id, property) {
+      console.log('editing', property);
+      RealEstateService.editRental(id, property);
     };
 
     vm.deleteProperty = function(id) {
