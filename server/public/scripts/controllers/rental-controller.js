@@ -4,6 +4,7 @@ app.controller('RentalController', function (RealEstateService) {
 
     var vm = this;
     vm.result = RealEstateService.result;
+    vm.best = RealEstateService.best;
 
     vm.getRentals = function() {
       RealEstateService.getRentals();
@@ -11,8 +12,14 @@ app.controller('RentalController', function (RealEstateService) {
     };
 
     vm.getRentals();
+    RealEstateService.putValues();
 
-  
+    vm.getValue = function() {
+      console.log('gettin value');
+      RealEstateService.getValues();
+    };
+
+
     vm.search = '';
     vm.sort = '';
 

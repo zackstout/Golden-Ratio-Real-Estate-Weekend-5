@@ -2,8 +2,14 @@
 <div class="row">
   <h3>For Rent!</h3>
 
+<div ng-repeat="best in rc.result.best">
+  value: {{best.sqft/best.rent}}
+
+</div>
 
   A cool idea would be to display the 3 best deals in terms of space/dollar
+
+  <button ng-click="rc.getValue()">get that value</button>
 <br><br>
   Search: <input type="text" ng-model="rc.search">
   <button ng-click="rc.searchRentals()">Search</button>

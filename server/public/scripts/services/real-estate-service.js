@@ -4,7 +4,8 @@ app.service('RealEstateService', function($http) {
   var self = this;
   self.result = {
     rentals: [],
-    listings: []
+    listings: [],
+    best: []
   };
 
   self.image = {};
@@ -30,6 +31,68 @@ app.service('RealEstateService', function($http) {
     });
   };
 
+
+
+
+
+  self.getValues = function() {
+    $http.get('/realestate/rentals/value').then(function(response) {
+      console.log(response.data);
+
+      self.result.best = response.data;
+    }).catch(function(err) {
+      console.log('I have failed you');
+    });
+  };
+
+  self.putValues = function() {
+    $http.put('/realestate/rentals').then(function(response) {
+      self.getValues();
+    }).catch(function(err) {
+      console.log('I have failed you my friend');
+    });
+  };
+
+
+
+
+
+  //   var out = [];
+  //   var count = 5;
+  //
+  //   function getTopFive(arr) {
+  //     for(var i = 0; i < arr.length; i++) {
+  //       if (arr[i] == getMax(arr) && count > 0) {
+  //         out.push(arr[i]);
+  //         arr.splice(i, 1);
+  //         count--;
+  //         getTopFive(arr);
+  //       }
+  //     }
+  //
+  //     // return out;
+  //   }
+  //
+  // getTopFive([1,2,3,4,5,4,3,5,6,2,4,5,4]);
+  //
+  // console.log(out);
+  // out = [];
+  //
+  // getTopFive([1,2,3,4,3,5,2,4,5,4]);
+  //
+  //
+  // console.log(out);
+  //
+  // function getMax(arr) {
+  //   var max = 0;
+  //   for(var i = 0; i < arr.length; i++) {
+  //     if (arr[i] > max) {
+  //       max = arr[i];
+  //     }
+  //   }
+  //   return max;
+  // }
+
   self.getRentalsOrdered = function(direction, type) {
     $http.get('/realestate/rentals/order/' + type + '/' + direction).then(function(response) {
       console.log(response.data);
@@ -39,7 +102,7 @@ app.service('RealEstateService', function($http) {
     });
   };
 
-//same idea over here, i wonder whether we could roll listing stuff into rental functions to avoid need for another service:
+  //same idea over here, i wonder whether we could roll listing stuff into rental functions to avoid need for another service:
   self.getListings = function() {
     $http.get('/realestate/listings').then(function(response) {
       console.log(response.data);
@@ -138,32 +201,32 @@ app.service('RealEstateService', function($http) {
               $http.put('realestate/rentals/' + id, updatedRental).then(function(response) {
                 swal("Well Done!", "property rental updated!", "success");
                 self.getRentals();
-            }).catch(function(error) {
-              console.log('shoot!!');
-            });
-          } else {
-            swal("Close call!");
-          }
-            });
+              }).catch(function(error) {
+                console.log('shoot!!');
+              });
+            } else {
+              swal("Close call!");
+            }
           });
         });
       });
+    });
   }; //end editRental
 
 
 
 
-//
-//
-//   gs.likeGame = function(gameId, game) {
-//   console.log('hi');
-//   $http.put('/games/' + gameId, game).then(function(response) {
-//     gs.refreshGames();
-//   }).catch(function(error) {
-//     console.log('nuts!!!');
-//   });
-// };
-//
+  //
+  //
+  //   gs.likeGame = function(gameId, game) {
+  //   console.log('hi');
+  //   $http.put('/games/' + gameId, game).then(function(response) {
+  //     gs.refreshGames();
+  //   }).catch(function(error) {
+  //     console.log('nuts!!!');
+  //   });
+  // };
+  //
 
 
 

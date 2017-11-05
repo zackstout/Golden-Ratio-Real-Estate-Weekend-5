@@ -25,6 +25,38 @@ router.get('/rentals', function(req, res) {
 });
 
 
+router.get('/rentals/value', function(req, res) {
+  Rental.find({}, null, {sort: {value: -1}, limit: 5}, function(err, foundRealEstate) {
+    if (err) {
+      console.log('whoooops');
+      res.sendStatus(500);
+    } else {
+      // console.log(foundRealEstate);
+      // var values = [];
+      // for (var i = 0; i<foundRealEstate.length; i ++) {
+      //   values.push(foundRealEstate[i].sqft/foundRealEstate[i].rent);
+      // }
+      // console.log(values);
+      res.send(foundRealEstate);
+    }
+  });
+});
+
+router.put('/rentals/', function(req, res) {
+  console.log(req.body);
+  Rental.update({
+    "value": req.body.sqft/req.body.rent,
+  }, function(err, data) {
+    if (err) {
+      console.log('noooo', err);
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+
 // the following four routes should be condensed into one:
 router.get('/rentals/order/rent/desc', function(req, res) {
   Rental.find({}, null, {sort: {rent: -1}}, function(err, foundRealEstate) {
@@ -71,6 +103,8 @@ router.get('/rentals/order/size/asc', function(req, res) {
 });
 
 
+
+
 router.get('/rentals/search/:id', function(req, res) {
   console.log(req.params.id);
   Rental.find({"city": req.params.id}, function(err, foundRealEstate) {
@@ -82,9 +116,6 @@ router.get('/rentals/search/:id', function(req, res) {
     }
   });
 });
-
-
-
 
 
 router.post('/rentals', function(req, res) {
