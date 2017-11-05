@@ -12,7 +12,7 @@ app.controller('RentalController', function (RealEstateService) {
 
     vm.getRentals();
 
-    // vm.image = RealEstateService.image;
+  
     vm.search = '';
     vm.sort = '';
 
