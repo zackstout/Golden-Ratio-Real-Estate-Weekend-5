@@ -44,11 +44,14 @@ input, select {
   margin: 4px;
 }
 
+select option:empty {
+  display: none
+}
 
 
 h1 {
   color: goldenrod;
-  margin: 10px;
+  margin-left: 20px;
 }
 
 a {
@@ -56,6 +59,6 @@ a {
 }
 
 canvas {
-  margin: 15px;
+  margin: 25px;
   border-color: blue;
 }

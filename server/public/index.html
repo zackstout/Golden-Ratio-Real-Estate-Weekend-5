@@ -1,68 +1,69 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
+<head>
+  <meta charset="utf-8">
+  <title>Golden Ratio Reality</title>
 
-    <script src="vendors/angular.min.js" charset="utf-8"></script>
-    <script src="vendors/angular-route.js" charset="utf-8"></script>
-    <script src="vendors/sweetalert.min.js" charset="utf-8"></script>
+  <script src="vendors/angular.min.js" charset="utf-8"></script>
+  <script src="vendors/angular-route.js" charset="utf-8"></script>
+  <script src="vendors/sweetalert.min.js" charset="utf-8"></script>
+
+  <script src="scripts/client.js" charset="utf-8"></script>
+  <script src="scripts/services/real-estate-service.js" charset="utf-8"></script>
+  <script src="scripts/controllers/modal-controller.js" charset="utf-8"></script>
+  <script src="scripts/controllers/main-controller.js" charset="utf-8"></script>
+  <script src="scripts/controllers/listing-controller.js" charset="utf-8"></script>
+  <script src="scripts/controllers/rental-controller.js" charset="utf-8"></script>
+
+  <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="styles/style.css">
+</head>
 
 
-    <script src="scripts/client.js" charset="utf-8"></script>
-    <script src="scripts/services/real-estate-service.js" charset="utf-8"></script>
-    <script src="scripts/controllers/modal-controller.js" charset="utf-8"></script>
-    <script src="scripts/controllers/main-controller.js" charset="utf-8"></script>
-    <script src="scripts/controllers/listing-controller.js" charset="utf-8"></script>
-    <script src="scripts/controllers/rental-controller.js" charset="utf-8"></script>
-
-    <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="styles/style.css">
-  </head>
-
-
-  <body ng-app="app">
-    <h1>Golden Ratio Realty</h1>
-    <div class='row'>
+<body ng-app="app">
+  <h1>Golden Ratio Realty</h1>
+  <div class='row'>
     <div id="logo" class= "col-md-3 col-lg-3">
-    <canvas id="canvas" width="200" height="130">
-</div>
-<div class="col-md-3 col-lg-3">
-  <br>
-<p id="tagline">Find your perfect balance today!</p>
-</div>
-</div>
-<div class="container">
+      <canvas id="canvas" width="200" height="130">
+      </div>
+      <div class="col-md-3 col-lg-3">
+        <br>
+        <p id="tagline">Find your perfect balance today!</p>
+      </div>
+    </div>
+    <div class="container">
       <div class="row" ng-controller="MainController as mc">
         <h4>Add a Property!</h4>
 
-          <form class="col-md-4 col-lg-4" ng-submit="mc.addPlace(mc.newPlace)">
-            <select ng-model="mc.newPlace.type">
-              <option value="rent">For Rent</option>
-              <option value="cost">For Sale</option>
-            </select>
-            <br>
-            <input type="text" ng-model="mc.newPlace.money" placeholder="Rent">
-            <br><input type="text" ng-model="mc.newPlace.sqft" placeholder="Size">
-            <br><input type="text" ng-model="mc.newPlace.city" placeholder="City">
-      <br>  <button type="submit">Do it!</button>
+        <form class="col-md-4 col-lg-4" ng-submit="mc.addPlace(mc.newPlace)">
+          <select ng-model="mc.newPlace.type">
+            <option value="Rent">For Rent</option>
+            <option value="Cost">For Sale</option>
+          </select>
+          <br><label>{{mc.newPlace.type}}:</label>
+          <input type="text" ng-model="mc.newPlace.money" placeholder="{{mc.newPlace.type}}">
+          <br><label>Size:</label>
+          <input type="text" ng-model="mc.newPlace.sqft" placeholder="Size">
+          <br><label>City:</label>
+          <input type="text" ng-model="mc.newPlace.city" placeholder="City">
+          <br>  <button type="submit">Do it!</button>
 
 
-          </form>
+        </form>
         <!-- </div>
       </script> -->
 
-<div class="col-md-4 col-lg-4">
-  <h3>Navigation</h3>
+      <div class="col-md-4 col-lg-4">
+        <h3>Navigation</h3>
         <a href="/#!/rentals">Rentals</a>
         <br>
         <a href="/#!/listings">Listings</a>
-</div>
-        <br><br>
       </div>
+      <br><br>
+    </div>
 
-        <main ng-view></main>
+    <main ng-view></main>
 
-      </div>
-  </body>
+  </div>
+</body>
 </html>

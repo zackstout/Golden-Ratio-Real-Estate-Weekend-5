@@ -3,7 +3,10 @@ app.controller('MainController', function (RealEstateService) {
     console.log('main controller created.');
 
     var vm = this;
-    vm.newPlace = {};
+    //set the type value initially to avoid drop-down empty option shenanigans:
+    vm.newPlace = {
+      type: 'Rent'
+    };
 
     vm.addPlace = function(place) {
       RealEstateService.addPlace(place);

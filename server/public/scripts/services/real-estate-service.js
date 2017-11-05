@@ -66,7 +66,7 @@ app.service('RealEstateService', function($http) {
   self.addPlace = function(place) {
     console.log(place);
 
-    if (place.type == "rent") {
+    if (place.type == "Rent") {
       console.log('rental!');
       var rentalToSend = {
         rent: place.money,
@@ -81,7 +81,7 @@ app.service('RealEstateService', function($http) {
         self.getValues();
       });
 
-    } else if (place.type == "cost") {
+    } else if (place.type == "Cost") {
       console.log('sale!');
       var listingToSend = {
         cost: place.money,
@@ -170,40 +170,5 @@ app.service('RealEstateService', function($http) {
     });
   }; //end editRental
 
-
-
-
-  //
-  //
-  //   gs.likeGame = function(gameId, game) {
-  //   console.log('hi');
-  //   $http.put('/games/' + gameId, game).then(function(response) {
-  //     gs.refreshGames();
-  //   }).catch(function(error) {
-  //     console.log('nuts!!!');
-  //   });
-  // };
-  //
-
-
-
-  //
-  // self.getImage = function() {
-  //   $http.get('https://maps.googleapis.com/maps/api/streetview?size=150x150&location=40.7,-74&key=' + APIkey).then(function(response) {
-  //     console.log(response.config.url);
-  //     self.image = response;
-  //   }).catch(function(err) {
-  //     console.log('whoops');
-  //   });
-  // };
-  //
-  // self.getImage2 = function() {
-  //   $http.get('https://loremflickr.com/150/150/house').then(function(response) {
-  //     console.log(response);
-  //     self.image = response;
-  //   }).catch(function(err) {
-  //     console.log('whoops');
-  //   });
-  // };
 
 });

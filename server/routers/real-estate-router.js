@@ -26,7 +26,7 @@ router.get('/rentals', function(req, res) {
 
 
 router.get('/rentals/value', function(req, res) {
-  Rental.find({}, null, {sort: {values: -1}, limit: 3}, function(err, foundRealEstate) {
+  Rental.find({}, null, {sort: {values: -1}, limit: 6}, function(err, foundRealEstate) {
     if (err) {
       console.log('whoooops');
       res.sendStatus(500);
