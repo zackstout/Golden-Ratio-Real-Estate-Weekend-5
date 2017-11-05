@@ -26,37 +26,17 @@ router.get('/rentals', function(req, res) {
 
 
 router.get('/rentals/value', function(req, res) {
-  Rental.find({}, null, {sort: {value: -1}, limit: 5}, function(err, foundRealEstate) {
+  Rental.find({}, null, {sort: {values: -1}, limit: 5}, function(err, foundRealEstate) {
     if (err) {
       console.log('whoooops');
       res.sendStatus(500);
     } else {
-      console.log(foundRealEstate);
-      for (var i = 0; i<foundRealEstate.length; i ++) {
-        foundRealEstate.values = (foundRealEstate[i].sqft/foundRealEstate[i].rent);
-        console.log(foundRealEstate);
-      }
+
       console.log(foundRealEstate);
       res.send(foundRealEstate);
     }
   });
 });
-//
-// router.put('/rentals/value', function(req, res) {
-//   console.log(req.body);
-//   Rental.findByIdAndUpdate(req.body._id, {
-//     $set: {
-//       value: req.body.sqft/req.body.rent
-//     }
-//   }, {new: true}, function(err, data) {
-//     if (err) {
-//       console.log('noooo', err);
-//       res.sendStatus(500);
-//     } else {
-//       res.sendStatus(200);
-//     }
-//   });
-// });
 
 
 

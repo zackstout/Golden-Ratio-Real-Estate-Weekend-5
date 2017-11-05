@@ -13,13 +13,16 @@ app.controller('RentalController', function (RealEstateService) {
 
     vm.getRentals();
 
-    // RealEstateService.putValues();
-    // RealEstateService.getValues();
 
     vm.getValue = function() {
       console.log('gettin value');
       RealEstateService.getValues();
     };
+
+    vm.getValue();
+//
+// //it's odd that calling this makes the first value NOT NaN..
+//     vm.getValue();
 
 
     vm.search = '';

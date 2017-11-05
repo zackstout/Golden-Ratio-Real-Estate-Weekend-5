@@ -1,6 +1,11 @@
 
 .rental, .listing {
   background-color: lightGray;
-  margin: 10px;
+  margin: 18px;
 
+}
+
+.bestRental {
+  background-color: lightPink;
+  margin: 18px;
 }

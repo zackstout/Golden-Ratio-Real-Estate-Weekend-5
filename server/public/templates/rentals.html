@@ -2,15 +2,18 @@
 <div class="row">
   <h3>For Rent!</h3>
 
-<div ng-repeat="best in rc.result.best">
-  value: {{best.sqft/best.rent}}
+<h4>Best Deals!</h4>
+<div class="row">
+<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 bestRental" ng-repeat="best in rc.result.best">
+    <p><label>Rent:</label> {{best.rent | currency}}</p>
+    <p><label>Size:</label> {{best.sqft}} ft<sup>2</sup></p>
+    <p><label>Location:</label> {{best.city}}</p>
+    <p><label>Value (ft<sup>2</sup>/dollar):</label> {{best.values}}</p>
 
 </div>
+</div>
 
-  A cool idea would be to display the 3 best deals in terms of space/dollar
-
-  <button ng-click="rc.getValue()">get that value</button>
-<br><br>
+<br><br><br><br>
   Search: <input type="text" ng-model="rc.search">
   <button ng-click="rc.searchRentals()">Search</button>
   <button ng-click="rc.getRentals()">See all</button>
@@ -25,9 +28,9 @@
   <br>
 
   <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 rental" ng-repeat="rental in rc.result.rentals">
-    <p>rent: {{rental.rent | currency}}</p>
-    <p>size: {{rental.sqft}} ft<sup>2</sup></p>
-    <p>location: {{rental.city}}</p>
+    <p><label>Rent:</label> {{rental.rent | currency}}</p>
+    <p><label>Size:</label> {{rental.sqft}} ft<sup>2</sup></p>
+    <p><label>Location:</label> {{rental.city}}</p>
     <!-- <img src="{{rc.image.config.url}}"> -->
     <button ng-click="rc.editProperty(rental._id, rental)"><span class="glyphicon glyphicon-pencil"></span></button>
     <button ng-click="rc.deleteProperty(rental._id)"><span class="glyphicon glyphicon-trash"></span></button>

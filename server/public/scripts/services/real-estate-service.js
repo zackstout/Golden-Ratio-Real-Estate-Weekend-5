@@ -33,8 +33,6 @@ app.service('RealEstateService', function($http) {
 
 
 
-
-
   self.getValues = function() {
     $http.get('/realestate/rentals/value').then(function(response) {
       console.log(response.data);
@@ -45,57 +43,10 @@ app.service('RealEstateService', function($http) {
     });
   };
 
-  // self.putValues = function(property) {
-  //   $http.put('/realestate/rentals/value', property).then(function(response) {
-  //     self.getValues();
-  //   }).catch(function(err) {
-  //     console.log('I have failed you my friend');
-  //   });
-  // };
-
-
-
-
-
-  //   var out = [];
-  //   var count = 5;
-  //
-  //   function getTopFive(arr) {
-  //     for(var i = 0; i < arr.length; i++) {
-  //       if (arr[i] == getMax(arr) && count > 0) {
-  //         out.push(arr[i]);
-  //         arr.splice(i, 1);
-  //         count--;
-  //         getTopFive(arr);
-  //       }
-  //     }
-  //
-  //     // return out;
-  //   }
-  //
-  // getTopFive([1,2,3,4,5,4,3,5,6,2,4,5,4]);
-  //
-  // console.log(out);
-  // out = [];
-  //
-  // getTopFive([1,2,3,4,3,5,2,4,5,4]);
-  //
-  //
-  // console.log(out);
-  //
-  // function getMax(arr) {
-  //   var max = 0;
-  //   for(var i = 0; i < arr.length; i++) {
-  //     if (arr[i] > max) {
-  //       max = arr[i];
-  //     }
-  //   }
-  //   return max;
-  // }
 
   self.getRentalsOrdered = function(direction, type) {
     $http.get('/realestate/rentals/order/' + type + '/' + direction).then(function(response) {
-      console.log(response.data);
+      // console.log(response.data);
       self.result.rentals = response.data;
     }).catch(function(err) {
       console.log('whoops');
