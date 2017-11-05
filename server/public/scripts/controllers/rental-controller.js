@@ -4,7 +4,13 @@ app.controller('RentalController', function (RealEstateService) {
 
     var vm = this;
     vm.result = RealEstateService.result;
-    RealEstateService.getRentals();
+
+    vm.getRentals = function() {
+      RealEstateService.getRentals();
+
+    };
+
+    vm.getRentals();
 
     // vm.image = RealEstateService.image;
     vm.search = '';
