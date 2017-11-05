@@ -32,7 +32,7 @@ router.get('/rentals/value', function(req, res) {
       res.sendStatus(500);
     } else {
 
-      console.log(foundRealEstate);
+      // console.log(foundRealEstate);
       res.send(foundRealEstate);
     }
   });
@@ -134,7 +134,8 @@ router.put('/rentals/:id', function(req, res) {
   Rental.findByIdAndUpdate({"_id": propertyId}, {
     "rent": req.body.rent,
     "sqft": req.body.sqft,
-    "city": req.body.city
+    "city": req.body.city,
+    "values": req.body.values
   }, function(err, data) {
     if (err) {
       console.log('noooo', err);

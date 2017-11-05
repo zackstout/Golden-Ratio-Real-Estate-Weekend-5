@@ -77,6 +77,7 @@ app.service('RealEstateService', function($http) {
         console.log('well done sir');
         swal("Well Done!", "property rental added!", "success");
         self.getRentals();
+        self.getValues();
       });
 
     } else if (place.type == "cost") {
@@ -106,6 +107,7 @@ app.service('RealEstateService', function($http) {
         swal("Poof!", {icon: "success"});
         $http.delete('realestate/rentals/' + id).then(function(response) {
           self.getRentals();
+          self.getValues();
         }).catch(function(error) {
           console.log('nuts');
         });
@@ -139,6 +141,8 @@ app.service('RealEstateService', function($http) {
         }).then(function(val) {
           console.log(val);
           updatedRental.city = val;
+          updatedRental.values = updatedRental.sqft/updatedRental.rent;
+          console.log(updatedRental);
           swal({
             title: "Save update??",
             text: "Rent: " + updatedRental.rent + ", Sqft: " + updatedRental.sqft + ", City: " + updatedRental.city,
@@ -152,6 +156,7 @@ app.service('RealEstateService', function($http) {
               $http.put('realestate/rentals/' + id, updatedRental).then(function(response) {
                 swal("Well Done!", "property rental updated!", "success");
                 self.getRentals();
+                self.getValues();
               }).catch(function(error) {
                 console.log('shoot!!');
               });
