@@ -7,6 +7,11 @@ app.controller('RentalController', function (RealEstateService) {
     // vm.image = RealEstateService.image;
     vm.search = '';
 
+    vm.order = function() {
+      console.log('ordering');
+      RealEstateService.getRentalsOrdered();
+    };
+
     RealEstateService.getRentals();
 
     vm.editProperty = function(id, property) {

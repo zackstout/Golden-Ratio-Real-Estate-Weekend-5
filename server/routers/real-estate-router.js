@@ -24,6 +24,21 @@ router.get('/rentals', function(req, res) {
   });
 });
 
+router.get('/rentals/order', function(req, res) {
+  Rental.find({}, null, {
+    sort: {
+      rent: -1
+    }
+  }, function(err, foundRealEstate) {
+    if (err) {
+      console.log('whoooops', err);
+      res.sendStatus(500);
+    } else {
+      res.send(foundRealEstate);
+    }
+  });
+});
+
 router.post('/rentals', function(req, res) {
   console.log(req.body);
   var property = new Rental(req.body);

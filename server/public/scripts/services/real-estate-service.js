@@ -20,6 +20,16 @@ app.service('RealEstateService', function($http) {
     });
   };
 
+  self.getRentalsOrdered = function() {
+    $http.get('/realestate/rentals/order').then(function(response) {
+      console.log(response.data);
+      self.result.rentals = response.data;
+    }).catch(function(err) {
+      console.log('whoops');
+    });
+  };
+
+
   self.getListings = function() {
     $http.get('/realestate/listings').then(function(response) {
       console.log(response.data);
