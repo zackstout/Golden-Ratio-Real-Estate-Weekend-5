@@ -1,5 +1,5 @@
 
-app.controller('MainController', function (RealEstateService, $uibModal) {
+app.controller('MainController', function (RealEstateService) {
     console.log('main controller created.');
     // $uibModal.open();
 
@@ -13,23 +13,40 @@ app.controller('MainController', function (RealEstateService, $uibModal) {
     vm.addPlace = function(place) {
       RealEstateService.addPlace(place);
     };
-    //
-    // vm.showModal = false;
-    //
-    // vm.openModal = function() {
-    //   // var modal =
-    //   // '<div id="add" ng-controller="MainController as mc"><form ng-submit="mc.addPlace(mc.newPlace)"><select ng-model="mc.newPlace.type"><option value="rent">For Rent</option><option value="sale">For Sale</option></select><input type="text" ng-model="mc.newPlace.size" placeholder="Size"><input type="text" ng-model="mc.newPlace.location" placeholder="City"><button type="submit">Do it!</button></form></div>';
-    //
-    //   console.log('ok');
-    //   vm.showModal = true;
-    //   $uibModal.open({
-    //     templateUrl: "modal.html",
-    //     controller: "ModalController"
-    //   });
-    // };
-    // vm.cancel = function() {
-    //   vm.showModal = false;
-    // };
+
+    vm.openModal = function() {
+
+      console.log('ok');
+      // swal('new property:', {
+      //   content: "input"
+      // }, "cost:", {
+      //   content: "input"
+      // }).then(function(value) {
+      //   console.log(value);
+      // });
+
+      swal({
+        title: 'Add property',
+        text: 'ok like this',
+        content: "input"
+      }).then(function (value) {
+        console.log(value);
+        swal({
+          title: "cost?",
+          content: "input"
+        }).then(function (value) {
+          console.log(value);
+          swal({
+            title: "sqft?",
+            content: "input"
+          });
+        });
+      }).catch(swal.noop);
+
+
+    };
+
+
 
     // RealEstateService.getImage2();
 

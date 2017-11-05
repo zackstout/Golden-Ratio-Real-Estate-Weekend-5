@@ -41,6 +41,7 @@ app.service('RealEstateService', function($http) {
       };
       $http.post('/realestate/rentals', rentalToSend).then(function(response) {
         console.log('well done sir');
+        swal("Well Done!", "property rental added!", "success");
         self.getRentals();
       });
 
@@ -53,22 +54,35 @@ app.service('RealEstateService', function($http) {
       };
       $http.post('/realestate/listings', listingToSend).then(function(response) {
         console.log('aha yes');
+        swal("Well Done!", "property listing added!", "success");
         self.getListings();
       });
     }
+  }; //end POST routes
+
+  self.deleteRental = function(id) {
+
+    swal({
+      title: "Are you sure??",
+      text: "should we consign this property to the flames?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true
+    }).then(function (willDelete) {
+      if (willDelete) {
+        swal("Poof!", {icon: "success"});
+        $http.delete('/realestate/rentals/' + id).then(function(response) {
+          self.getRentals();
+        }).catch(function(error) {
+          console.log('nuts');
+        });
+      } else {
+        swal("Phew!");
+      }
+    });
+
   };
-  //
-  // self.addGame = function(gameToAdd) {
-  //       console.log(gameToAdd);
-  //       $http.post('/games', gameToAdd).then(function(response) {
-  //         console.log('yup');
-  //         gs.refreshGames();
-  //
-  //       }).catch(function(error) {
-  //         console.log('nope');
-  //
-  //       });
-  //   };
+
 
 
 

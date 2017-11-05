@@ -60,4 +60,18 @@ router.post('/listings', function(req, res) {
 });
 
 
+router.delete('/rentals/:id', function(req, res) {
+  var propertyId = req.params.id;
+  //the _id needn't be in quotes, but if the thing's name had a dot, we would need quotes:
+  Rental.findByIdAndRemove({"_id": propertyId}, function(err, data) {
+    if (err) {
+      console.log('noooo');
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+
 module.exports = router;
