@@ -72,6 +72,6 @@ app.controller('MainController', function (RealEstateService, ListingService) {
         ctx.stroke();
       }
 
-      goldenRectangle(200);
+      goldenRectangle(300);
 
 });

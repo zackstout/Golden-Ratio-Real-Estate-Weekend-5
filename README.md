@@ -18,3 +18,6 @@ db.listings.find().forEach(function(r){r.values = Math.round(1000*r.sqft/r.cost)
 
 ## Functionality
 View, post, edit and delete real estate properties to your heart's content! You can search and sort them too! I took steps toward implementing favorites functionality, but we didn't quite get there!
+
+## Stretch Goals
+In addition to favorites, I also wanted to implement form validation, maybe add random images of houses via, say, google's street view API. Also aim to refactor the code so that listings and rentals are both handled by the same functions, to avoid duplication of code. Wanted to add search filter options, in particular a cost range and a number of hits to return.
