@@ -1,11 +1,54 @@
-
+<!--
 <div class="row">
   <h3>For Sale!</h3>
   <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 listing" ng-repeat="listing in lc.result.listings">
     <p>cost: {{listing.cost}}</p>
     <p>size: {{listing.sqft}}</p>
     <p>location: {{listing.city}}</p>
-    <!-- <img src="https://loremflickr.com/150/150/house"> -->
+
+  </div>
+</div> -->
+
+
+
+
+  <h3 id="listingsHead">LISTINGS</h3>
+
+<h4 id="bestDealsListHead">Our TOP 6 Deals:</h4>
+<div class="row" id="bestListDeals">
+<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 bestRental" ng-repeat="best in lc.result.bestList">
+    <p><label>Cost:</label> {{best.cost | currency}}</p>
+    <p><label>Size:</label> {{best.sqft}} ft<sup>2</sup></p>
+    <p><label>Location:</label> {{best.city}}</p>
+    <p><label>Value (ft<sup>2</sup>/dollar):</label> {{best.values}}</p>
+
+</div>
+</div>
+
+<br>
+<h3>All Listings:</h3>
+  Search: <input type="text" ng-model="lc.search">
+  <button ng-click="lc.searchListings()">Search</button>
+  <button ng-click="lc.getListings()">See all</button>
+  <br>
+  <br>
+  Sort by: <select ng-model="lc.sort">
+    <option value="cost">Cost</option>
+    <option value="size">Size</option>
+  </select>
+  <button ng-click="lc.orderDescending()"><span class="glyphicon glyphicon-triangle-bottom"></span></button>
+  <button ng-click="lc.orderAscending()"><span class="glyphicon glyphicon-triangle-top"></span></button>
+  <br>
+
+<div class="row">
+  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 rental" ng-repeat="listing in lc.result.listings">
+    <p><label>Cost:</label> {{listing.cost | currency}}</p>
+    <p><label>Size:</label> {{listing.sqft}} ft<sup>2</sup></p>
+    <p><label>Location:</label> {{listing.city}}</p>
+    <!-- <img src="{{rc.image.config.url}}"> -->
+    <button ng-click="lc.editProperty(listing._id, listing)"><span class="glyphicon glyphicon-pencil"></span></button>
+    <button ng-click="lc.deleteProperty(listing._id)"><span class="glyphicon glyphicon-trash"></span></button>
+
 
   </div>
 </div>

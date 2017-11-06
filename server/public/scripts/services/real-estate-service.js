@@ -53,20 +53,10 @@ app.service('RealEstateService', function($http) {
     });
   };
 
-  //same idea over here, i wonder whether we could roll listing stuff into rental functions to avoid need for another service:
-  self.getListings = function() {
-    $http.get('/realestate/listings').then(function(response) {
-      console.log(response.data);
-      self.result.listings = response.data;
-    }).catch(function(err) {
-      console.log('whoops');
-    });
-  };
 
-  self.addPlace = function(place) {
+  self.addRental = function(place) {
     console.log(place);
 
-    if (place.type == "Rent") {
       console.log('rental!');
       var rentalToSend = {
         rent: place.money,
@@ -81,19 +71,7 @@ app.service('RealEstateService', function($http) {
         self.getValues();
       });
 
-    } else if (place.type == "Cost") {
-      console.log('sale!');
-      var listingToSend = {
-        cost: place.money,
-        sqft: place.sqft,
-        city: place.city
-      };
-      $http.post('/realestate/listings', listingToSend).then(function(response) {
-        console.log('aha yes');
-        swal("Well Done!", "property listing added!", "success");
-        self.getListings();
-      });
-    }
+
   }; //end addPlace
 
   self.deleteRental = function(id) {
@@ -117,6 +95,7 @@ app.service('RealEstateService', function($http) {
       }
     });
   }; //end deleteRental
+
 
   self.editRental = function(id, property) {
     console.log('hi');
@@ -169,6 +148,5 @@ app.service('RealEstateService', function($http) {
       });
     });
   }; //end editRental
-
 
 });

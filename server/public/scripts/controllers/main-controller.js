@@ -1,5 +1,5 @@
 
-app.controller('MainController', function (RealEstateService) {
+app.controller('MainController', function (RealEstateService, ListingService) {
     console.log('main controller created.');
 
     var vm = this;
@@ -9,7 +9,14 @@ app.controller('MainController', function (RealEstateService) {
     };
 
     vm.addPlace = function(place) {
-      RealEstateService.addPlace(place);
+      console.log('clicked', place);
+      if (place.type == 'Rent') {
+        RealEstateService.addRental(place);
+
+      } else {
+        ListingService.addListing(place);
+
+      }
     };
 
 //creating a sick logo:

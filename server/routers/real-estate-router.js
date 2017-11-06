@@ -176,4 +176,119 @@ router.post('/listings', function(req, res) {
 
 
 
+
+
+
+
+router.delete('/listings/:id', function(req, res) {
+  var propertyId = req.params.id;
+  //the _id needn't be in quotes, but if the thing's name had a dot, we would need quotes:
+  Listing.findByIdAndRemove({"_id": propertyId}, function(err, data) {
+    if (err) {
+      console.log('noooo');
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+router.put('/listings/:id', function(req, res) {
+  var propertyId = req.params.id;
+  console.log(req.body);
+
+  Listing.findByIdAndUpdate({"_id": propertyId}, {
+    "cost": req.body.rent,
+    "sqft": req.body.sqft,
+    "city": req.body.city,
+    "values": req.body.values
+  }, function(err, data) {
+    if (err) {
+      console.log('noooo', err);
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+
+router.get('/listings/value', function(req, res) {
+  Listing.find({}, null, {sort: {values: -1}, limit: 6}, function(err, foundRealEstate) {
+    if (err) {
+      console.log('whoooops');
+      res.sendStatus(500);
+    } else {
+
+      // console.log(foundRealEstate);
+      res.send(foundRealEstate);
+    }
+  });
+});
+
+
+
+// the following four routes should be condensed into one:
+router.get('/listings/order/rent/desc', function(req, res) {
+  Listing.find({}, null, {sort: {rent: -1}}, function(err, foundRealEstate) {
+    if (err) {
+      console.log('whoooops', err);
+      res.sendStatus(500);
+    } else {
+      res.send(foundRealEstate);
+    }
+  });
+});
+
+router.get('/listings/order/rent/asc', function(req, res) {
+  Listing.find({}, null, {sort: {rent: 1}}, function(err, foundRealEstate) {
+    if (err) {
+      console.log('whoooops', err);
+      res.sendStatus(500);
+    } else {
+      res.send(foundRealEstate);
+    }
+  });
+});
+
+router.get('/listings/order/size/desc', function(req, res) {
+  Listing.find({}, null, {sort: {sqft: -1}}, function(err, foundRealEstate) {
+    if (err) {
+      console.log('whoooops', err);
+      res.sendStatus(500);
+    } else {
+      res.send(foundRealEstate);
+    }
+  });
+});
+
+router.get('/listings/order/size/asc', function(req, res) {
+  Listing.find({}, null, {sort: {sqft: 1}}, function(err, foundRealEstate) {
+    if (err) {
+      console.log('whoooops', err);
+      res.sendStatus(500);
+    } else {
+      res.send(foundRealEstate);
+    }
+  });
+});
+
+
+
+
+router.get('/listings/search/:id', function(req, res) {
+  console.log(req.params.id);
+  // var regEx = new RegExp('req.params.id', i);
+  Listing.find({"city": {$regex: req.params.id}}, function(err, foundRealEstate) {
+    if (err) {
+      console.log('whoooops', err);
+      res.sendStatus(500);
+    } else {
+      res.send(foundRealEstate);
+    }
+  });
+});
+
+
+
 module.exports = router;
