@@ -16,14 +16,12 @@ app.controller('ListingController', function (ListingService, RealEstateService)
   };
 
   vm.getValueList();
-  //
-  // //it's odd that calling this makes the first value NOT NaN..
-  //     vm.getValue();
 
-  vm.addFave = function(id, listing) {
-    console.log('fav', id, listing);
-    RealEstateService.addFave(id, listing);
-  };
+  //
+  // vm.addFave = function(id, listing) {
+  //   console.log('fav', id, listing);
+  //   RealEstateService.addFaveList(id, listing);
+  // };
 
 
   vm.search = '';

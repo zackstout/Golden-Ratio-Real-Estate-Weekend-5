@@ -32,10 +32,9 @@
     <p><label>Rent:</label> {{rental.rent | currency}}</p>
     <p><label>Size:</label> {{rental.sqft}} ft<sup>2</sup></p>
     <p><label>Location:</label> {{rental.city}}</p>
-    <!-- <img src="{{rc.image.config.url}}"> -->
     <button ng-click="rc.editProperty(rental._id, rental)"><span class="glyphicon glyphicon-pencil"></span></button>
     <button ng-click="rc.deleteProperty(rental._id)"><span class="glyphicon glyphicon-trash"></span></button>
-    <button ng-click="rc.addFave(rental._id, rental)"><span class="glyphicon glyphicon-star"></span></button>
+    <!-- <button ng-click="rc.addFave(rental._id, rental)"><span class="glyphicon glyphicon-star"></span></button> -->
 
 
   </div>

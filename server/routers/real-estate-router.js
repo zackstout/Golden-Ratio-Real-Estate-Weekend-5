@@ -7,14 +7,14 @@ var Schema = mongoose.Schema;
 
 var RentalSchema = new Schema({rent: Number, sqft: Number, city: String, values: Number});
 var ListingSchema = new Schema({cost: Number, sqft: Number, city: String, values: Number});
-var FaveSchema = new Schema({moneys: Number, sqft: Number, city: String, values: Number});
+// var FaveSchema = new Schema({moneys: Number, sqft: Number, city: String, values: Number});
 
 
 var Rental = mongoose.model('Rentals', RentalSchema, 'rentals');
 var Listing = mongoose.model('Listings', ListingSchema, 'listings');
-var Fave = mongoose.model('Favorites', FaveSchema, 'faves');
+// var Fave = mongoose.model('Favorites', FaveSchema, 'faves');
 
-
+mongoose.Promise = global.Promise;
 
 //Rentals Routes:
 router.get('/rentals', function(req, res) {
@@ -119,24 +119,39 @@ router.post('/rentals', function(req, res) {
   });
 });
 
-router.post('/favorites', function(req, res) {
-  console.log(req.body);
-  if (req.body.rent) {
-    req.body.moneys = req.body.rent;
-  } else {
-    req.body.moneys = req.body.cost;
-  }
-  var property = new Fave(req.body);
-  console.log(property);
-  property.save(function(err, data) {
-    if (err) {
-      console.log('ooooops');
-      res.sendStatus(500);
-    } else {
-      res.sendStatus(200);
-    }
-  });
-});
+// router.post('/favorites/rentals', function(req, res) {
+//   console.log(req.body);
+//   var obj = req.body;
+//   obj.moneys = req.body.rent;
+//
+//   var property = new Fave(obj);
+//   console.log(property);
+//   property.save(function(err, data) {
+//     if (err) {
+//       console.log('ooooops');
+//       res.sendStatus(500);
+//     } else {
+//       res.sendStatus(200);
+//     }
+//   });
+// });
+//
+// router.post('/favorites/listings', function(req, res) {
+//   console.log(req.body);
+//   req.body.moneys = req.body.cost;
+//
+//
+//   var property = new Fave(req.body);
+//   console.log(property);
+//   property.save(function(err, data) {
+//     if (err) {
+//       console.log('ooooops');
+//       res.sendStatus(500);
+//     } else {
+//       res.sendStatus(200);
+//     }
+//   });
+// });
 
 router.delete('/rentals/:id', function(req, res) {
   var propertyId = req.params.id;
@@ -252,8 +267,8 @@ router.get('/listings/value', function(req, res) {
 
 
 // the following four routes should be condensed into one:
-router.get('/listings/order/rent/desc', function(req, res) {
-  Listing.find({}, null, {sort: {rent: -1}}, function(err, foundRealEstate) {
+router.get('/listings/order/cost/desc', function(req, res) {
+  Listing.find({}, null, {sort: {cost: -1}}, function(err, foundRealEstate) {
     if (err) {
       console.log('whoooops', err);
       res.sendStatus(500);
@@ -263,8 +278,8 @@ router.get('/listings/order/rent/desc', function(req, res) {
   });
 });
 
-router.get('/listings/order/rent/asc', function(req, res) {
-  Listing.find({}, null, {sort: {rent: 1}}, function(err, foundRealEstate) {
+router.get('/listings/order/cost/asc', function(req, res) {
+  Listing.find({}, null, {sort: {cost: 1}}, function(err, foundRealEstate) {
     if (err) {
       console.log('whoooops', err);
       res.sendStatus(500);

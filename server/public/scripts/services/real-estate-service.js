@@ -46,16 +46,30 @@ app.service('RealEstateService', function($http) {
       console.log('I have failed you');
     });
   };
-
-  self.addFave = function(id, property) {
-    console.log(id, property, "servicin");
-    $http.post('/realestate/favorites', property).then(function(response) {
-      console.log('well done sir');
-      swal("Well Done!", "new favorite added!", "success");
-      self.getRentals();
-      self.getValues();
-    });
-  };
+  // 
+  // self.addFaveList = function(id, property) {
+  //   console.log(id, property, "servicin list");
+  //   $http.post('/realestate/favorites/listings', property).then(function(response) {
+  //     console.log('well done sir');
+  //     swal("Well Done!", "new favorite added!", "success");
+  //     self.getListings();
+  //     self.getValuesList();
+  //   });
+  // };
+  //
+  // self.addFaveRental = function(id, property) {
+  //   console.log(id, property, "servicin rent");
+  //   $http.post('/realestate/favorites/rentals', property).then(function(response) {
+  //     console.log('well done sir');
+  //     swal("Well Done!", "new favorite added!", "success");
+  //     self.getRentals();
+  //     self.getValues();
+  //   });
+  // };
+  //
+  // self.getFaves = function() {
+  //   $http.get('/realestate/favorites'......)
+  // }
 
   self.getRentalsOrdered = function(direction, type) {
     $http.get('/realestate/rentals/order/' + type + '/' + direction).then(function(response) {
