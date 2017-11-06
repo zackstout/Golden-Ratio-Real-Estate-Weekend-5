@@ -13,6 +13,11 @@ app.controller('RentalController', function (RealEstateService) {
 
     vm.getRentals();
 
+    vm.addFave = function(id, rental) {
+      console.log('fav rental', id, rental);
+      RealEstateService.addFave(id, rental);
+    };
+
 
     vm.getValue = function() {
       console.log('gettin value');

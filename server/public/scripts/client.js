@@ -11,5 +11,8 @@ app.config(function($routeProvider) {
   }).when('/listings', {
     templateUrl: 'templates/listings.html',
     controller: 'ListingController as lc'
+  }).when('/favorites', {
+    templateUrl: 'templates/favorite.html',
+    controller: 'FavoriteController as fc'
   });
 });

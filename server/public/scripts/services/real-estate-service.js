@@ -8,9 +8,13 @@ app.service('RealEstateService', function($http) {
     best: []
   };
 
+  self.faves = [];
+
   self.image = {};
 
   // var APIkey = 'AIzaSyCsPm4V1kjeCqOosP3N3_9d-NEgj5r166w';
+
+
 
 
   self.getRentals = function() {
@@ -43,6 +47,15 @@ app.service('RealEstateService', function($http) {
     });
   };
 
+  self.addFave = function(id, property) {
+    console.log(id, property, "servicin");
+    $http.post('/realestate/favorites', property).then(function(response) {
+      console.log('well done sir');
+      swal("Well Done!", "new favorite added!", "success");
+      self.getRentals();
+      self.getValues();
+    });
+  };
 
   self.getRentalsOrdered = function(direction, type) {
     $http.get('/realestate/rentals/order/' + type + '/' + direction).then(function(response) {

@@ -6,10 +6,14 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var RentalSchema = new Schema({rent: Number, sqft: Number, city: String, values: Number});
-var ListingSchema = new Schema({cost: Number, sqft: Number, city: String});
+var ListingSchema = new Schema({cost: Number, sqft: Number, city: String, values: Number});
+var FaveSchema = new Schema({moneys: Number, sqft: Number, city: String, values: Number});
+
 
 var Rental = mongoose.model('Rentals', RentalSchema, 'rentals');
 var Listing = mongoose.model('Listings', ListingSchema, 'listings');
+var Fave = mongoose.model('Favorites', FaveSchema, 'faves');
+
 
 
 //Rentals Routes:
@@ -105,6 +109,25 @@ router.get('/rentals/search/:id', function(req, res) {
 router.post('/rentals', function(req, res) {
   console.log(req.body);
   var property = new Rental(req.body);
+  property.save(function(err, data) {
+    if (err) {
+      console.log('ooooops');
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+router.post('/favorites', function(req, res) {
+  console.log(req.body);
+  if (req.body.rent) {
+    req.body.moneys = req.body.rent;
+  } else {
+    req.body.moneys = req.body.cost;
+  }
+  var property = new Fave(req.body);
+  console.log(property);
   property.save(function(err, data) {
     if (err) {
       console.log('ooooops');
