@@ -10,12 +10,16 @@ body {
   background-color: #FFECCC
 }
 
-#bestDeals {
+#bestDeals, #bestListDeals {
   background-color: chocolate;
 }
 
-#bestDealsHead, #rentalsHead {
+#bestDealsHead, #rentalsHead, #listingsHead, #bestDealsListHead, .nav, .head {
   text-align: center;
+}
+
+form {
+  margin-right: 20px;
 }
 
 .bestRental {
@@ -23,6 +27,7 @@ body {
   margin: 18px;
   padding: 10px;
   border-radius: 6px;
+  margin-left: 25px;
 }
 
 #tagline {
@@ -55,7 +60,14 @@ h1 {
 }
 
 a {
-  font-size: 18px;
+  font-size: 27px;
+  color: goldenrod;
+
+}
+
+#navBar {
+  background-color: navy;
+
 }
 
 canvas {
