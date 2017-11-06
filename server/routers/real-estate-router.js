@@ -186,6 +186,10 @@ router.put('/rentals/:id', function(req, res) {
 });
 
 
+
+
+
+
 //Listing Routes:
 //I wonder if these could also be wrapped up in above functions with a variable, rather than just replicating all the same stuff in a new router:
 router.get('/listings', function(req, res) {
@@ -214,10 +218,6 @@ router.post('/listings', function(req, res) {
 
 
 
-
-
-
-
 router.delete('/listings/:id', function(req, res) {
   var propertyId = req.params.id;
   //the _id needn't be in quotes, but if the thing's name had a dot, we would need quotes:
@@ -236,7 +236,7 @@ router.put('/listings/:id', function(req, res) {
   console.log(req.body);
 
   Listing.findByIdAndUpdate({"_id": propertyId}, {
-    "cost": req.body.rent,
+    "cost": req.body.cost,
     "sqft": req.body.sqft,
     "city": req.body.city,
     "values": req.body.values

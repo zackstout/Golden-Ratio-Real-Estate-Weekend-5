@@ -89,7 +89,7 @@ app.service('ListingService', function($http) {
     }; //end deleteRental
 
   self.editListing = function(id, property) {
-    console.log('hi');
+    console.log('hi', property);
     var updatedListing = {};
     swal({
       title: "Update cost",
@@ -112,11 +112,11 @@ app.service('ListingService', function($http) {
         }).then(function(val) {
           console.log(val);
           updatedListing.city = val;
-          updatedListing.values = updatedListing.sqft/updatedListing.rent;
-          console.log(updatedListing);
+          updatedListing.values = updatedListing.sqft/updatedListing.cost;
+          // console.log(updatedListing);
           swal({
             title: "Save update??",
-            text: "Cost: " + updatedListing.rent + ", Sqft: " + updatedListing.sqft + ", City: " + updatedListing.city,
+            text: "Cost: " + updatedListing.cost + ", Sqft: " + updatedListing.sqft + ", City: " + updatedListing.city,
             icon: "warning",
             buttons: ['Nope', 'Save'],
             dangerMode: true
