@@ -14,7 +14,14 @@ app.use(express.static('server/public'));
 app.use('/realestate', router);
 
 var mongoose = require('mongoose');
-var databaseUrl = 'mongodb://localhost:27017/realestate';
+var databaseUrl = '';
+if(process.env.MONGODB_URI) {
+    // use the string value of the environment variable
+    databaseUrl = process.env.MONGODB_URI;
+} else {
+    // use the local database server
+    databaseUrl = 'mongodb://localhost:27017/realestate';
+}
 
 mongoose.connection.on('connected', function() {
   console.log('we in!');
