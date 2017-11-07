@@ -1,9 +1,27 @@
 
 # Golden Ratio Realty!
+View, post, edit and delete real estate properties to your heart's content! You can search and sort them too! I took steps toward implementing favorites functionality, but we didn't quite get there!
+
+## Built With
+Front-end: Angular.js, angular-route
+Back-end: Express, node.js, mongoDB, mongoose
 
 ## Getting Started
-IMPORTANT: Execute the following commands in the terminal where you have mongo running:
 
+### Prerequisites
+
+- Node.js
+- mongoDB
+
+### Installing
+
+1. Download this project.
+2. `npm install`
+3. `npm start`
+4. Navigate to localhost:6660 in your browser.
+
+### Database Setup
+IMPORTANT: Execute the following commands in the terminal where you have mongo running:
 ```
 use realestate;
 
@@ -16,8 +34,20 @@ db.listings.update({}, {$set: {values: 0}}, {multi: true});
 db.listings.find().forEach(function(r){r.values = Math.round(1000*r.sqft/r.cost)/1000; db.listings.save(r);})
 ```
 
-## Functionality
-View, post, edit and delete real estate properties to your heart's content! You can search and sort them too! I took steps toward implementing favorites functionality, but we didn't quite get there!
+## Documentation
 
-## Stretch Goals
-In addition to favorites, I also wanted to implement form validation, maybe add random images of houses via, say, google's street view API. Also aim to refactor the code so that listings and rentals are both handled by the same functions, to avoid duplication of code. Wanted to add search filter options, in particular a cost range and a number of hits to return.
+### Completed Features
+
+[x] Post new properties
+[x] Delete properties
+[x] Edit properties
+[x] Search through displayed properties
+[x] Sort properties by cost or by size
+
+### Next Steps
+
+[] Favorites functionality
+[] Form validation
+[] Images of houses
+[] Refactor code to handle rentals and listings with a single set of functions
+[] Add filter options to search (cost range, number of hits)
