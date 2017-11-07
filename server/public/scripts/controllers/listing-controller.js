@@ -7,7 +7,7 @@ app.controller('ListingController', function (ListingService, RealEstateService)
 
   ListingService.getListings();
 
-  vm.best = ListingService.bestList;
+  // vm.best = ListingService.bestList;
 
 
   vm.getValueList = function() {

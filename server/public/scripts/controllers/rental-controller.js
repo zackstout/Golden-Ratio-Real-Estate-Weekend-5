@@ -4,10 +4,20 @@ app.controller('RentalController', function (RealEstateService) {
 
     var vm = this;
     vm.result = RealEstateService.result;
-    vm.best = RealEstateService.best;
+    //wait this should not have worked.....wait maybe we just weren't using it:
+    // vm.best = RealEstateService.best;
+
+    //promises -- wait, no, this is databinding:
+    // vm.rentals = RealEstateService.rentals;
+    // vm.best = RealEstateService.best;
+
+    vm.rentals = [];
+    vm.best = [];
 
     vm.getRentals = function() {
-      RealEstateService.getRentals();
+      RealEstateService.getRentals().then(function(res) {
+        vm.rentals = res;
+      });
 
     };
 
@@ -21,7 +31,9 @@ app.controller('RentalController', function (RealEstateService) {
 
     vm.getValue = function() {
       console.log('gettin value');
-      RealEstateService.getValues();
+      RealEstateService.getValues().then(function(res) {
+        vm.best = res;
+      });
     };
 
     vm.getValue();
@@ -35,15 +47,21 @@ app.controller('RentalController', function (RealEstateService) {
 
     vm.searchRentals = function() {
       console.log(vm.search);
-      RealEstateService.searchRentals(vm.search);
+      RealEstateService.searchRentals(vm.search).then(function(res) {
+        vm.rentals = res;
+      });
     };
 
     vm.orderDescending = function() {
-      RealEstateService.getRentalsOrdered('desc', vm.sort);
+      RealEstateService.getRentalsOrdered('desc', vm.sort).then(function(res) {
+        vm.rentals = res;
+      });
     };
 
     vm.orderAscending = function() {
-      RealEstateService.getRentalsOrdered('asc', vm.sort);
+      RealEstateService.getRentalsOrdered('asc', vm.sort).then(function(res) {
+        vm.rentals = res;
+      });
     };
 
 

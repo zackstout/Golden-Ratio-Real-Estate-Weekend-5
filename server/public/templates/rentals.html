@@ -3,7 +3,7 @@
 
 <h4 id="bestDealsHead">Our TOP 6 Deals:</h4>
 <div class="row" id="bestDeals">
-<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 bestRental" ng-repeat="best in rc.result.best">
+<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 bestRental" ng-repeat="best in rc.best">
     <p><label>Rent:</label> {{best.rent | currency}}</p>
     <p><label>Size:</label> {{best.sqft}} ft<sup>2</sup></p>
     <p><label>Location:</label> {{best.city}}</p>
@@ -28,7 +28,7 @@
   <br>
 
 <div class="row">
-  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 rental" ng-repeat="rental in rc.result.rentals">
+  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 rental" ng-repeat="rental in rc.rentals">
     <p><label>Rent:</label> {{rental.rent | currency}}</p>
     <p><label>Size:</label> {{rental.sqft}} ft<sup>2</sup></p>
     <p><label>Location:</label> {{rental.city}}</p>

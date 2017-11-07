@@ -8,19 +8,21 @@ app.service('RealEstateService', function($http) {
     best: []
   };
 
-  self.faves = [];
+  // self.faves = [];
 
-  self.image = {};
-
-  // var APIkey = 'AIzaSyCsPm4V1kjeCqOosP3N3_9d-NEgj5r166w';
-
-
+  //using promise syntax instead -- wait do we even need these??:
+  self.rentals = [];
+  self.best = [];
 
 
   self.getRentals = function() {
-    $http.get('/realestate/rentals').then(function(response) {
+    return $http.get('/realestate/rentals').then(function(response) {
       console.log(response.data);
       self.result.rentals = response.data;
+      //promises:
+      return response.data;
+      // self.rentals = response.data;
+      //^Nahh that actually happens in controller methinks
     }).catch(function(err) {
       console.log('I have failed you');
     });
@@ -28,8 +30,11 @@ app.service('RealEstateService', function($http) {
 
   self.searchRentals = function(query) {
     console.log('we out here', query);
-    $http.get('/realestate/rentals/search/' + query).then(function(response) {
+    return $http.get('/realestate/rentals/search/' + query).then(function(response) {
       self.result.rentals = response.data;
+      //promises:
+      // self.rentals = response.data;
+      return response.data;
     }).catch(function(err) {
       console.log('done messed up');
     });
@@ -38,10 +43,13 @@ app.service('RealEstateService', function($http) {
 
 
   self.getValues = function() {
-    $http.get('/realestate/rentals/value').then(function(response) {
+    return $http.get('/realestate/rentals/value').then(function(response) {
       console.log(response.data);
 
       self.result.best = response.data;
+      //promises:
+      self.best = response.data;
+      return response.data;
     }).catch(function(err) {
       console.log('I have failed you');
     });
@@ -72,9 +80,12 @@ app.service('RealEstateService', function($http) {
   // }
 
   self.getRentalsOrdered = function(direction, type) {
-    $http.get('/realestate/rentals/order/' + type + '/' + direction).then(function(response) {
+    return $http.get('/realestate/rentals/order/' + type + '/' + direction).then(function(response) {
       // console.log(response.data);
       self.result.rentals = response.data;
+      //promises:
+      self.rentals = response.data;
+      return response.data;
     }).catch(function(err) {
       console.log('whoops');
     });
