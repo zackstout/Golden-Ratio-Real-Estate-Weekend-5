@@ -56,7 +56,7 @@ app.service('ListingService', function($http) {
         cost: place.money,
         sqft: place.sqft,
         city: place.city,
-        values: place.sqft/place.money
+        values: Math.round(1000*place.sqft/place.money)/1000
       };
       $http.post('/realestate/listings', listingToSend).then(function(response) {
         console.log('aha yes');

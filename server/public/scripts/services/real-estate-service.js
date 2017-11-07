@@ -46,7 +46,7 @@ app.service('RealEstateService', function($http) {
       console.log('I have failed you');
     });
   };
-  // 
+  //
   // self.addFaveList = function(id, property) {
   //   console.log(id, property, "servicin list");
   //   $http.post('/realestate/favorites/listings', property).then(function(response) {
@@ -89,7 +89,7 @@ app.service('RealEstateService', function($http) {
         rent: place.money,
         sqft: place.sqft,
         city: place.city,
-        values: place.sqft/place.money
+        values: Math.round(1000*place.sqft/place.money)/1000
       };
       $http.post('/realestate/rentals', rentalToSend).then(function(response) {
         console.log('well done sir');
