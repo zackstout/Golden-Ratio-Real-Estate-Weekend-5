@@ -3,8 +3,8 @@
 View, post, edit and delete real estate properties to your heart's content! You can search and sort them too! I took steps toward implementing favorites functionality, but we didn't quite get there!
 
 ## Built With
-Front-end: Angular.js, angular-route
-Back-end: Express, node.js, mongoDB, mongoose
+- Front-end: Angular.js, angular-route, Sweet Alerts
+- Back-end: Express, node.js, mongoDB, mongoose
 
 ## Getting Started
 
@@ -38,16 +38,16 @@ db.listings.find().forEach(function(r){r.values = Math.round(1000*r.sqft/r.cost)
 
 ### Completed Features
 
-[x] Post new properties
-[x] Delete properties
-[x] Edit properties
-[x] Search through displayed properties
-[x] Sort properties by cost or by size
+- [x] Post new properties
+- [x] Delete properties
+- [x] Edit properties
+- [x] Search through displayed properties
+- [x] Sort properties by cost or by size
 
 ### Next Steps
 
-[] Favorites functionality
-[] Form validation
-[] Images of houses
-[] Refactor code to handle rentals and listings with a single set of functions
-[] Add filter options to search (cost range, number of hits)
+- [] Favorites functionality
+- [] Form validation
+- [] Images of houses
+- [] Refactor code to handle rentals and listings with a single set of functions
+- [] Add filter options to search (cost range, number of hits)
