@@ -55,7 +55,8 @@ app.service('ListingService', function($http) {
       var listingToSend = {
         cost: place.money,
         sqft: place.sqft,
-        city: place.city
+        city: place.city,
+        values: place.sqft/place.money
       };
       $http.post('/realestate/listings', listingToSend).then(function(response) {
         console.log('aha yes');
