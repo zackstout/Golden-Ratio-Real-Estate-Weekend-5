@@ -62,6 +62,7 @@ app.service('ListingService', function($http) {
         console.log('aha yes');
         swal("Well Done!", "property listing added!", "success");
         self.getListings();
+        self.getValuesList();
       });
 
   }; //end addPlace
