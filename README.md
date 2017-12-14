@@ -34,7 +34,14 @@ db.listings.update({}, {$set: {values: 0}}, {multi: true});
 db.listings.find().forEach(function(r){r.values = Math.round(1000*r.sqft/r.cost)/1000; db.listings.save(r);})
 ```
 
-## Documentation
+## Screenshots
+
+Main view with top deals:
+![wkd5_preview](https://user-images.githubusercontent.com/29472568/33973474-b774ddf2-e048-11e7-801c-cd3d9d3c6014.png)
+
+Search and order by functionality:
+![wkd5_preview2](https://user-images.githubusercontent.com/29472568/33973477-bbed8820-e048-11e7-8adc-13480d2c4d18.png)
+
 
 ### Completed Features
 

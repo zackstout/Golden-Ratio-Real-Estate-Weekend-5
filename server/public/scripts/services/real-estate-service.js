@@ -10,7 +10,7 @@ app.service('RealEstateService', function($http) {
 
   // self.faves = [];
 
-  //using promise syntax instead -- wait do we even need these??:
+  //using promise syntax instead -- wait do we even need these?? -- yes for saving the view:
   self.rentals = [];
   self.best = [];
 
@@ -18,11 +18,11 @@ app.service('RealEstateService', function($http) {
   self.getRentals = function() {
     return $http.get('/realestate/rentals').then(function(response) {
       console.log(response.data);
-      self.result.rentals = response.data;
+      // self.result.rentals = response.data;
       //promises:
+      self.rentals = response.data;
       return response.data;
-      // self.rentals = response.data;
-      //^Nahh that actually happens in controller methinks
+      //^Nahh that actually happens in controller methinks -- but also here
     }).catch(function(err) {
       console.log('I have failed you');
     });
@@ -31,9 +31,9 @@ app.service('RealEstateService', function($http) {
   self.searchRentals = function(query) {
     console.log('we out here', query);
     return $http.get('/realestate/rentals/search/' + query).then(function(response) {
-      self.result.rentals = response.data;
+      // self.result.rentals = response.data;
       //promises:
-      // self.rentals = response.data;
+      self.rentals = response.data;
       return response.data;
     }).catch(function(err) {
       console.log('done messed up');
@@ -46,7 +46,7 @@ app.service('RealEstateService', function($http) {
     return $http.get('/realestate/rentals/value').then(function(response) {
       console.log(response.data);
 
-      self.result.best = response.data;
+      // self.result.best = response.data;
       //promises:
       self.best = response.data;
       return response.data;
@@ -82,7 +82,7 @@ app.service('RealEstateService', function($http) {
   self.getRentalsOrdered = function(direction, type) {
     return $http.get('/realestate/rentals/order/' + type + '/' + direction).then(function(response) {
       // console.log(response.data);
-      self.result.rentals = response.data;
+      // self.result.rentals = response.data;
       //promises:
       self.rentals = response.data;
       return response.data;

@@ -3,7 +3,7 @@ app.controller('RentalController', function (RealEstateService) {
     console.log('rental controller created.');
 
     var vm = this;
-    vm.result = RealEstateService.result;
+    // vm.result = RealEstateService.result;
     //wait this should not have worked.....wait maybe we just weren't using it:
     // vm.best = RealEstateService.best;
 
@@ -11,8 +11,9 @@ app.controller('RentalController', function (RealEstateService) {
     // vm.rentals = RealEstateService.rentals;
     // vm.best = RealEstateService.best;
 
-    vm.rentals = [];
-    vm.best = [];
+//snapshot in time when controller loads:
+    vm.rentals = RealEstateService.rentals;
+    vm.best = RealEstateService.best;
 
     vm.getRentals = function() {
       RealEstateService.getRentals().then(function(res) {
@@ -21,7 +22,11 @@ app.controller('RentalController', function (RealEstateService) {
 
     };
 
-    vm.getRentals();
+    if (RealEstateService.rentals.length === 0) {
+      vm.getRentals();
+
+    }
+
     //
     // vm.addFave = function(id, rental) {
     //   console.log('fav rental', rental);
@@ -36,7 +41,11 @@ app.controller('RentalController', function (RealEstateService) {
       });
     };
 
-    vm.getValue();
+
+    if (RealEstateService.best.length === 0) {
+      vm.getValue();
+
+    }
 //
 // //it's odd that calling this makes the first value NOT NaN..
 //     vm.getValue();
