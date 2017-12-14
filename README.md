@@ -39,7 +39,7 @@ db.listings.find().forEach(function(r){r.values = Math.round(1000*r.sqft/r.cost)
 Main view with top deals:
 ![wkd5_preview](https://user-images.githubusercontent.com/29472568/33973474-b774ddf2-e048-11e7-801c-cd3d9d3c6014.png)
 
-Search and order by functionality:
+Search and sort functionality:
 ![wkd5_preview2](https://user-images.githubusercontent.com/29472568/33973477-bbed8820-e048-11e7-8adc-13480d2c4d18.png)
 
 
