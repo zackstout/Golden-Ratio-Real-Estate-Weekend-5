@@ -58,11 +58,11 @@ Search and sort functionality:
 
 ### Next Steps
 
-- [] Favorites functionality
-- [] Form validation
-- [] Images of houses
-- [] Refactor code to handle rentals and listings with a single set of functions
-- [] Add filter options to search (cost range, number of hits)
+- [ ] Favorites functionality
+- [ ] Form validation
+- [ ] Images of houses
+- [ ] Refactor code to handle rentals and listings with a single set of functions
+- [ ] Add filter options to search (cost range, number of hits)
 
 ## Author
 * Zack Stout
