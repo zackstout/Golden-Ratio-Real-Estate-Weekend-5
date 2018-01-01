@@ -3,15 +3,20 @@
 View, post, edit and delete real estate properties to your heart's content! You can search and sort them too! I took steps toward implementing favorites functionality, but we didn't quite get there!
 
 ## Built With
-- Front-end: Angular.js, angular-route, Sweet Alerts
-- Back-end: Express, node.js, mongoDB, mongoose
+- AngularJS
+- SweetAlert
+- Angular-route
+- Express.js
+- Node.js
+- Mongoose.js
+- MongoDB
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js
-- mongoDB
+- MongoDB
 
 ### Installing
 
@@ -58,3 +63,6 @@ Search and sort functionality:
 - [] Images of houses
 - [] Refactor code to handle rentals and listings with a single set of functions
 - [] Add filter options to search (cost range, number of hits)
+
+## Author
+* Zack Stout
